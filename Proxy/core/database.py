@@ -54,13 +54,13 @@ class RedisDataBase(object):
         success_proxies = self.client.zrangebyscore(KEY, SUCCESS_SCORE, SUCCESS_SCORE)
         if len(success_proxies) > 0:
             return {
-                'core': [proxy.decode() for proxy in success_proxies if isinstance(proxy, bytes)]
+                'proxies': [proxy.decode() for proxy in success_proxies if isinstance(proxy, bytes)]
             }
         else:
             proxies = self.client.zrangebyscore(KEY, INIT_SCORE, SUCCESS_SCORE)
             if len(proxies) > 0:
                 return {
-                    'core': [proxy.decode() for proxy in proxies if isinstance(proxy, bytes)]
+                    'proxies': [proxy.decode() for proxy in proxies if isinstance(proxy, bytes)]
                 }
             else:
                 return None
