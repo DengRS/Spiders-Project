@@ -37,9 +37,9 @@ class FoodData(object):
                             '评论数': data.get('allCommentNum'),
                             '图片': data.get('frontImg'),
                         })
-                    self.file.save_to_csv(self.headers, self.file_path.format(city), self.data['data'], mode='a+')
-                    self.data.clear()
-                delay_s()
+            delay_s()
+        self.file.save_to_csv(self.headers, self.file_path.format(city), self.data['data'], mode='a+')
+        self.data.clear()
 
     def all_city(self):
         if not os.path.exists(city_href_path):
